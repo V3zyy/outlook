@@ -1,0 +1,49 @@
+<?php
+session_start();
+if(!isset($_SESSION["start"])){
+    $_SESSION["start"] = 0;
+}
+
+if(!isset($_SESSION["einde"])){
+    $_SESSION["einde"] = 0;
+}
+?>
+
+<form action="" method="post">
+    <button name="start" class="click">begin</button>
+</form>
+
+<form action="" method="post">
+    <button name="einde" class="click">einde</button>
+</form>
+
+<?php
+
+$x = $_SESSION["start"];
+$y = $_SESSION["einde"];
+
+// $z = ((int)$y - (int)$x);
+
+var_dump($y->diff($x, true));
+
+
+if(isset($_POST['start']))
+{
+    $date_clicked_begin = date('H:i');
+    $_SESSION["start"] = $date_clicked_begin;
+
+}
+
+if(isset($_POST['einde']))
+{
+    $date_clicked_einde = date('H:i');
+    $_SESSION['einde'] = $date_clicked_einde;
+}
+
+
+
+echo "Je begon om " . $_SESSION['start'] . " en stopte om " . $_SESSION["einde"] .  "<br>";
+echo var_dump($y->diff($x, true));
+
+echo "Nu heb je " . $z . " uur gewerkt";
+?>
